@@ -25,7 +25,7 @@ import pandas as pd
 from pydantic import BaseModel, Field, validator
 from scipy import stats
 
-from .base import ModelType # assuming ModelType is defined in base.py
+from .base import ModelType # assuming ModelType is defined in base.py # pyright: ignore[reportMissingImports]
 
 logger = logging.getLogger(__name__)
 
@@ -443,14 +443,14 @@ class ModelMonitor:
             return InMemoryStorage()
         elif backend == "sqlite":
             try:
-                from .storage.sqlite_storage import SQLiteStorage
+                from .storage.sqlite_storage import SQLiteStorage # type: ignore
                 return SQLiteStorage(self.config.storage_path)
             except ImportError:
                 logger.warning("SQLiteStorage not available, falling back to memory")
                 return InMemoryStorage()
         elif backend == "postgresql":
             try:
-                from .storage.postgres_storage import PostgreSQLStorage
+                from .storage.postgres_storage import PostgreSQLStorage # type: ignore
                 return PostgreSQLStorage()
             except ImportError:
                 logger.warning("PostgreSQLStorage not available, falling back to memory")

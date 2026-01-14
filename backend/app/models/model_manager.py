@@ -29,7 +29,7 @@ import torch
 import yaml
 from pydantic import BaseModel, Field, validator
 
-from .base import ModelType, ModelFramework, ModelDevice, ModelConfig, ModelMetadata
+from .base import ModelType, ModelFramework, ModelDevice, ModelConfig, ModelMetadata # type: ignore
 from .model_cache import ModelCache, get_global_cache
 
 logger = logging.getLogger(__name__)

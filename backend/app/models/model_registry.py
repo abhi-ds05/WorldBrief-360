@@ -29,7 +29,7 @@ from pydantic import (
     HttpUrl, IPvAnyAddress
 )
 
-from .base import ModelType, ModelFramework, ModelDevice
+from .base import ModelType, ModelFramework, ModelDevice # type: ignore
 
 logger = logging.getLogger(__name__)
 
@@ -870,13 +870,13 @@ class ModelRegistry:
         if backend == "filesystem":
             return FileSystemStorage(self.config.local_storage_path)
         elif backend == "sqlite":
-            from .storage.sqlite_storage import SQLiteStorage
+            from .storage.sqlite_storage import SQLiteStorage # type: ignore
             return SQLiteStorage(self.config.storage_uri)
         elif backend == "postgresql":
-            from .storage.postgres_storage import PostgreSQLStorage
+            from .storage.postgres_storage import PostgreSQLStorage # type: ignore
             return PostgreSQLStorage(self.config.storage_uri)
         elif backend == "mongodb":
-            from .storage.mongodb_storage import MongoDBStorage
+            from .storage.mongodb_storage import MongoDBStorage # type: ignore
             return MongoDBStorage(self.config.storage_uri)
         else:
             logger.warning(f"Unknown storage backend: {backend}, using filesystem")
