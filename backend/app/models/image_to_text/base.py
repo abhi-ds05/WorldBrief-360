@@ -21,7 +21,7 @@ import torch
 from PIL import Image
 from pydantic import BaseModel, Field, validator
 
-from ...base import ModelType, ModelFramework, ModelDevice
+from ...base import ModelType, ModelFramework, ModelDevice #type: ignore
 
 logger = logging.getLogger(__name__)
 
